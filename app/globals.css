@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --header: #050517;
+  --footer: #050517;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +20,12 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background: var(--header);
+}
+
+footer {
+  background: var(--footer);
 }
