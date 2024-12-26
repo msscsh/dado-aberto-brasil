@@ -1,2 +1,9 @@
 # dado-aberto-brasil
-Uma coleção de projetos para distribuição de informações públicas do Brasil para as mais diversas aplicações.
+Uma coleção de projetos para a visualização de informações de dados abertos.
+
+# deputados overview
+Panorama dos deputados
+
+
+
+
