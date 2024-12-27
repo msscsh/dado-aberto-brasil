@@ -1,5 +1,6 @@
 export default async function Page() {
-  const data = await fetch('http://localhost:8080/posts')
+  // const data = await fetch('http://localhost:8080/posts')
+  const data = await fetch('https://api.vercel.app/blog')
   const posts = await data.json()
   return (
     <ul>
