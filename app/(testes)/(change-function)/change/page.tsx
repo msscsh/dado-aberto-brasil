@@ -6,7 +6,7 @@ export default function Counter() {
   const [name, setName] = useState('Taylor');
   const [age, setAge] = useState(42);
 
-  function handleNameChange(e) {
+  function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
     setName(e.target.value);
   }
 
