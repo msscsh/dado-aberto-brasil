@@ -24,7 +24,7 @@ export default function MinhaTela() {
 	function init(deputados: Deputado[] | null) {
 
 		if (!deputados) {
-			fetch('/list_deputados.json')
+			fetch('/dado-aberto-brasil/list_deputados.json')
 			.then(response => response.json())
 			.then( (deputados: Deputado[]) => {
 				setDeputados(embaralharArray(deputados));
