@@ -1,8 +1,8 @@
 export default function LayoutParaQuiz({children,}: { children: React.ReactNode; }) {
 
 	return (
-		<main>
+		<div>
 			{children}
-		</main>
+		</div>
 		);
 }

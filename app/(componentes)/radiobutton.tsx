@@ -2,7 +2,7 @@ import React from 'react';
 
 function RadioButtons({ opcoes, onChange }) {
   return (
-    <div>
+    <div className="radiobuttons-container">
       {opcoes.map(opcao => (
         <label key={opcao.ideCadastro} className="radio-option">
           <input
