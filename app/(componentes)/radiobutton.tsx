@@ -12,7 +12,7 @@ function RadioButtons({ opcoes, onChange }) {
             value={opcao.ideCadastro}
             onChange={onChange}
           />
-          {opcao.nome}
+          {opcao.nomeParlamentar}
         </label>
       </div>
       ))}
