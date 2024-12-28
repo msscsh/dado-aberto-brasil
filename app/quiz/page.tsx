@@ -2,25 +2,31 @@
 import React, { useState, useEffect } from 'react';
 import DeputadoCard from '../(componentes)/deputado-card';
 import RadioButtons from '../(componentes)/radiobutton';
-import Link from 'next/link';
+
+interface Deputado {
+	urlFoto: string;
+	ideCadastro: string;
+	nome: string;
+	nomeParlamentar: string;
+}
 
 export default function MinhaTela() {
-  const [deputados, setDeputados] = useState(null);
-  const [deputadoAtual, setDeputadoAtual] = useState(null);
-  const [deputadoQuiz1, setDeputadoQuiz1] = useState(null);
-  const [deputadoQuiz2, setDeputadoQuiz2] = useState(null);
-  const [deputadoQuiz3, setDeputadoQuiz3] = useState(null);
-  const [deputadoSelecionado, setDeputadoSelecionado] = useState(null);
-  const [deputadosEmbaralhados, setDeputadosEmbaralhados] = useState(null);
+  const [deputados, setDeputados] = useState<Deputado[]>([]);
+  const [deputadoAtual, setDeputadoAtual] = useState<Deputado | null | undefined>(null);
+  const [deputadoQuiz1, setDeputadoQuiz1] = useState<Deputado | null | undefined>(null);
+  const [deputadoQuiz2, setDeputadoQuiz2] = useState<Deputado | null | undefined>(null);
+  const [deputadoQuiz3, setDeputadoQuiz3] = useState<Deputado | null | undefined>(null);
+  const [deputadoSelecionado, setDeputadoSelecionado] = useState<Deputado | null | undefined>(null);
+  const [deputadosEmbaralhados, setDeputadosEmbaralhados] = useState<Deputado[]>([]);
 
   useEffect(() => { init(null); }, []);
 
-	function init(deputados) {
+	function init(deputados: Deputado[] | null) {
 
 		if (!deputados) {
 			fetch('/list_deputados.json')
 			.then(response => response.json())
-			.then(deputados => {
+			.then( (deputados: Deputado[]) => {
 				setDeputados(embaralharArray(deputados));
 				init(deputados);
 			});
@@ -32,12 +38,12 @@ export default function MinhaTela() {
 			setDeputadoQuiz2(deputados.find(deputado => deputado.ideCadastro === idesDe4DeputadosRandom[2]));
 			setDeputadoQuiz3(deputados.find(deputado => deputado.ideCadastro === idesDe4DeputadosRandom[3]));
 			setDeputadoSelecionado(null)
-			setDeputadosEmbaralhados(embaralharArray([deputadoAtual, deputadoQuiz1, deputadoQuiz2, deputadoQuiz3]));
+			setDeputadosEmbaralhados(embaralharArray([deputadoAtual, deputadoQuiz1, deputadoQuiz2, deputadoQuiz3].filter((deputado) => deputado !== null && deputado !== undefined)));
 		}
 	}
-
+	
   	//um shuffle com o algoritmo do Fisher
-	function embaralharArray(deputadosParaEmbaralhar) {
+	function embaralharArray(deputadosParaEmbaralhar: Deputado[]) {
 		if(deputadosEmbaralhados) {
 			for (let i = deputadosParaEmbaralhar.length - 1; i > 0; i--) {
 				const j = Math.floor(Math.random() * (i + 1));
@@ -65,7 +71,7 @@ export default function MinhaTela() {
 					<DeputadoCard deputado={deputadoAtual} />
 				</div>
 				<div style={{width: "100%"}}>
-					<RadioButtons opcoes={embaralharArray([deputadoAtual, deputadoQuiz1, deputadoQuiz2, deputadoQuiz3])} onChange={handleDaSelecao} />
+					<RadioButtons opcoes={embaralharArray([deputadoAtual, deputadoQuiz1, deputadoQuiz2, deputadoQuiz3].filter((deputado) => deputado !== null && deputado !== undefined))} onChange={handleDaSelecao} />
 				</div>
 			</div>
 		);

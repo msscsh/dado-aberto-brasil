@@ -1,6 +1,19 @@
 import React from 'react';
 
-function RadioButtons({ opcoes, onChange }) {
+
+interface Deputado {
+	urlFoto: string;
+	ideCadastro: string;
+	nome: string;
+	nomeParlamentar: string;
+}
+
+interface RadioButtonsProps {
+  opcoes: Deputado[];
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function RadioButtons({ opcoes, onChange }: RadioButtonsProps) {
   return (
     <>
       {opcoes.map(opcao => (
