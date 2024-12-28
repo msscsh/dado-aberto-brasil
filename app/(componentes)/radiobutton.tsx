@@ -2,9 +2,10 @@ import React from 'react';
 
 function RadioButtons({ opcoes, onChange }) {
   return (
-    <div className="radiobuttons-container">
+    <>
       {opcoes.map(opcao => (
-        <label key={opcao.ideCadastro} className="radio-option">
+      <div key={opcao.ideCadastro}>
+        <label className="radio-option">
           <input
             type="radio"
             name="opcao"
@@ -13,8 +14,9 @@ function RadioButtons({ opcoes, onChange }) {
           />
           {opcao.nome}
         </label>
+      </div>
       ))}
-    </div>
+    </>
   );
 }
 
