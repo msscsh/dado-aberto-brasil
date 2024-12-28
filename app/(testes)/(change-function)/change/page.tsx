@@ -12,6 +12,13 @@ export default function Counter() {
 
   function handleAgeChange() {
     setAge(age + 1);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('myCat2', 'Tom');
+    }
+  }
+
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('myCat1', 'Tom');
   }
 
   return (
