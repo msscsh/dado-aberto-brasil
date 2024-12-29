@@ -8,6 +8,7 @@ interface Deputado {
 	ideCadastro: string;
 	nome: string;
 	nomeParlamentar: string;
+	partido: string;
 }
 
 export default function MinhaTela() {
@@ -83,7 +84,7 @@ export default function MinhaTela() {
 					<DeputadoCard deputado={deputadoAtual} />
 				</div>
 				<div>
-					<p>Acertou! O nome do deputado é {deputadoAtual.nome}</p>
+					<p>Acertou! O nome do deputado é {deputadoAtual.nome} do partido {deputadoAtual.partido}</p>
 
 					<button
 						className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#29bb8b] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
